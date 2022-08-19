@@ -11,4 +11,7 @@ func _physics_process(delta):
 	rotation_degrees += 5
 
 func _on_Area2D_area_exited(area):
-	queue_free()
+	if area.name != "Flow":
+		get_parent().get_node("AudioStreamPlayer").play()
+		queue_free()
+

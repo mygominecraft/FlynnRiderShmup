@@ -1,0 +1,499 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://Flynny.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Shooty.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Flower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Control.gd" type="Script" id=4]
+[ext_resource path="res://GuardBoss.gd" type="Script" id=5]
+[ext_resource path="res://Flynn.gd" type="Script" id=6]
+[ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/source-code-pro/source-code-pro-2.010R-ro-1.030R-it/TTF/SourceCodePro-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Health Bar.gd" type="Script" id=8]
+[ext_resource path="res://Space.gd" type="Script" id=9]
+[ext_resource path="res://Game Over.gd" type="Script" id=10]
+[ext_resource path="res://Points.gd" type="Script" id=11]
+[ext_resource path="res://Shoot.png" type="Texture" id=12]
+[ext_resource path="res://Boss.png" type="Texture" id=13]
+[ext_resource path="res://Space.png" type="Texture" id=14]
+[ext_resource path="res://FrogDeath.png" type="Texture" id=15]
+[ext_resource path="res://Boss.gd" type="Script" id=16]
+[ext_resource path="res://Die.png" type="Texture" id=17]
+[ext_resource path="res://Rapunzel Death.png" type="Texture" id=18]
+[ext_resource path="res://FrogAttack.png" type="Texture" id=19]
+[ext_resource path="res://Guard.png" type="Texture" id=20]
+[ext_resource path="res://Rapunzel Special.png" type="Texture" id=21]
+[ext_resource path="res://Smolder.png" type="Texture" id=22]
+[ext_resource path="res://Frog.png" type="Texture" id=23]
+[ext_resource path="res://Level.gd" type="Script" id=24]
+[ext_resource path="res://HealthBar.png" type="Texture" id=25]
+[ext_resource path="res://Rapunzel Shoot.png" type="Texture" id=26]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 26 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=47]
+resource_name = "New Anim"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=48]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="DynamicFont" id=45]
+font_data = ExtResource( 7 )
+
+[sub_resource type="Theme" id=42]
+
+[sub_resource type="DynamicFont" id=46]
+size = 15
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=31]
+length = 0.55
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeAnimationPlayer/Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.160784, 0.160784, 0.160784, 0 ), Color( 0.160784, 0.160784, 0.160784, 1 ) ]
+}
+
+[sub_resource type="Theme" id=32]
+
+[sub_resource type="DynamicFont" id=43]
+size = 50
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=33]
+bg_color = Color( 0.145098, 0.137255, 0.156863, 1 )
+border_width_left = 10
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.282353, 0.278431, 0.290196, 1 )
+border_width_left = 10
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=36]
+bg_color = Color( 0.145098, 0.137255, 0.156863, 1 )
+border_width_left = 10
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+shadow_color = Color( 1, 0.054902, 0.054902, 1 )
+
+[sub_resource type="DynamicFont" id=44]
+size = 50
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 0.145098, 0.137255, 0.156863, 1 )
+border_width_left = 10
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=39]
+bg_color = Color( 0.909804, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=40]
+bg_color = Color( 0.498039, 0.027451, 0.027451, 1 )
+border_width_left = 10
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=41]
+bg_color = Color( 0.145098, 0.137255, 0.156863, 1 )
+border_width_left = 10
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 10
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 24 )
+
+[node name="Health Bar" type="Sprite" parent="."]
+position = Vector2( 181, 80 )
+scale = Vector2( 0.25, 0.25 )
+z_index = -1
+texture = ExtResource( 25 )
+hframes = 4
+script = ExtResource( 8 )
+
+[node name="Flynn" type="KinematicBody2D" parent="."]
+position = Vector2( 100, 450 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 6 )
+
+[node name="ShootTimer" type="Timer" parent="Flynn"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Flynn"]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+frame = 5
+
+[node name="Flynny" parent="Flynn" instance=ExtResource( 1 )]
+
+[node name="Timer" type="Timer" parent="Flynn"]
+wait_time = 3.0
+one_shot = true
+
+[node name="SpecialTimer" type="Timer" parent="Flynn"]
+wait_time = 15.0
+
+[node name="Shooty" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1600, 0 )
+z_index = -2
+
+[node name="Flower" parent="." instance=ExtResource( 3 )]
+
+[node name="Boss" type="KinematicBody2D" parent="."]
+position = Vector2( 1325, 510 )
+scale = Vector2( 0.75, 0.75 )
+script = ExtResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="Boss"]
+texture = ExtResource( 13 )
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="Boss"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boss/Area2D"]
+polygon = PoolVector2Array( 33, -176, 74, -111, 90, -60, 107, -55, 110, -48, 105, 6, 92, 10, 86, 65, 51, 131, 1, 175, -42, 163, -71, 134, -114, -44, -94, -68, -91, -114, -80, -139, -36, -172 )
+
+[node name="VelocityTimer" type="Timer" parent="Boss"]
+
+[node name="GuardTimer" type="Timer" parent="Boss"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Boss"]
+"anims/New Anim" = SubResource( 47 )
+anims/RESET = SubResource( 48 )
+
+[node name="GuardBoss" type="KinematicBody2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="GuardBoss"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 20 )
+
+[node name="Area2D" type="Area2D" parent="GuardBoss"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GuardBoss/Area2D"]
+polygon = PoolVector2Array( -3, -164, 37, -151, 78, -108, 95, -44, 96, -6, 110, 77, 91, 108, 78, 97, 67, 100, 58, 128, -18, 167, -56, 163, -84, 136, -100, 81, -103, -38, -91, -100, -48, -150 )
+
+[node name="Timer" type="Timer" parent="GuardBoss"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="GuardBoss"]
+wait_time = 3.0
+one_shot = true
+
+[node name="GuardBoss2" type="KinematicBody2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="GuardBoss2"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 20 )
+
+[node name="Area2D" type="Area2D" parent="GuardBoss2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GuardBoss2/Area2D"]
+polygon = PoolVector2Array( -3, -164, 37, -151, 78, -108, 95, -44, 96, -6, 110, 77, 91, 108, 78, 97, 67, 100, 58, 128, -18, 167, -56, 163, -84, 136, -100, 81, -103, -38, -91, -100, -48, -150 )
+
+[node name="Timer" type="Timer" parent="GuardBoss2"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="GuardBoss2"]
+wait_time = 3.0
+one_shot = true
+
+[node name="GuardBoss3" type="KinematicBody2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="GuardBoss3"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 20 )
+
+[node name="Area2D" type="Area2D" parent="GuardBoss3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GuardBoss3/Area2D"]
+polygon = PoolVector2Array( -3, -164, 37, -151, 78, -108, 95, -44, 96, -6, 110, 77, 91, 108, 78, 97, 67, 100, 58, 128, -18, 167, -56, 163, -84, 136, -100, 81, -103, -38, -91, -100, -48, -150 )
+
+[node name="Timer" type="Timer" parent="GuardBoss3"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="GuardBoss3"]
+wait_time = 3.0
+one_shot = true
+
+[node name="GuardBoss4" type="KinematicBody2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="GuardBoss4"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 20 )
+
+[node name="Area2D" type="Area2D" parent="GuardBoss4"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GuardBoss4/Area2D"]
+polygon = PoolVector2Array( -3, -164, 37, -151, 78, -108, 95, -44, 96, -6, 110, 77, 91, 108, 78, 97, 67, 100, 58, 128, -18, 167, -56, 163, -84, 136, -100, 81, -103, -38, -91, -100, -48, -150 )
+
+[node name="Timer" type="Timer" parent="GuardBoss4"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="GuardBoss4"]
+wait_time = 3.0
+one_shot = true
+
+[node name="GuardBoss5" type="KinematicBody2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="GuardBoss5"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 20 )
+
+[node name="Area2D" type="Area2D" parent="GuardBoss5"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GuardBoss5/Area2D"]
+polygon = PoolVector2Array( -3, -164, 37, -151, 78, -108, 95, -44, 96, -6, 110, 77, 91, 108, 78, 97, 67, 100, 58, 128, -18, 167, -56, 163, -84, 136, -100, 81, -103, -38, -91, -100, -48, -150 )
+
+[node name="Timer" type="Timer" parent="GuardBoss5"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="GuardBoss5"]
+wait_time = 3.0
+one_shot = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1920, 0 )
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 960, 540 )
+z_index = 4096
+texture = ExtResource( 14 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Points" type="Label" parent="UI"]
+margin_left = 675.0
+margin_top = 28.0
+margin_right = 900.0
+margin_bottom = 68.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 45 )
+text = "Points: "
+script = ExtResource( 11 )
+level = "Boss"
+
+[node name="Game Over" type="Label" parent="UI"]
+visible = false
+margin_left = 500.0
+margin_top = 350.0
+margin_right = 576.0
+margin_bottom = 364.0
+rect_scale = Vector2( 6, 6 )
+theme = SubResource( 42 )
+custom_fonts/font = SubResource( 46 )
+text = "GAME OVER"
+script = ExtResource( 10 )
+
+[node name="Restart Timer" type="Timer" parent="UI/Game Over"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Control" type="Control" parent="UI"]
+pause_mode = 2
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+next_level = "res://LevelEndless.tscn"
+
+[node name="FadeAnimationPlayer" type="AnimationPlayer" parent="UI/Control"]
+anims/Fade = SubResource( 31 )
+
+[node name="Fade" type="ColorRect" parent="UI/Control/FadeAnimationPlayer"]
+visible = false
+modulate = Color( 0.160784, 0.160784, 0.160784, 0 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0.113725, 0.113725, 0.113725, 1 )
+
+[node name="Banner" type="ColorRect" parent="UI/Control"]
+margin_top = 300.0
+margin_right = 1920.0
+margin_bottom = 550.0
+color = Color( 0.0588235, 0.0588235, 0.0588235, 0.866667 )
+
+[node name="Dim" type="ColorRect" parent="UI/Control"]
+margin_right = 1930.0
+margin_bottom = 1080.0
+color = Color( 0.192157, 0.168627, 0.168627, 0.180392 )
+
+[node name="Buttons" type="VBoxContainer" parent="UI/Control"]
+light_mask = 2
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 500.0
+margin_top = 330.0
+margin_right = 974.0
+margin_bottom = 468.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="ResumeButton" type="Button" parent="UI/Control/Buttons"]
+light_mask = 2
+margin_right = 474.0
+margin_bottom = 67.0
+theme = SubResource( 32 )
+custom_colors/font_color_disabled = Color( 0.470588, 0.494118, 0.454902, 1 )
+custom_colors/font_color = Color( 0.470588, 0.494118, 0.454902, 1 )
+custom_colors/font_color_hover = Color( 0.470588, 0.494118, 0.454902, 1 )
+custom_colors/font_color_pressed = Color( 0.470588, 0.494118, 0.454902, 1 )
+custom_fonts/font = SubResource( 43 )
+custom_styles/hover = SubResource( 33 )
+custom_styles/pressed = SubResource( 34 )
+custom_styles/focus = SubResource( 35 )
+custom_styles/normal = SubResource( 36 )
+button_mask = 0
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="UI/Control/Buttons"]
+light_mask = 2
+margin_top = 71.0
+margin_right = 474.0
+margin_bottom = 138.0
+theme = SubResource( 32 )
+custom_colors/font_color_disabled = Color( 0.470588, 0.494118, 0.454902, 1 )
+custom_colors/font_color = Color( 0.470588, 0.494118, 0.454902, 1 )
+custom_colors/font_color_hover = Color( 0.470588, 0.494118, 0.454902, 1 )
+custom_colors/font_color_pressed = Color( 0.470588, 0.494118, 0.454902, 1 )
+custom_fonts/font = SubResource( 44 )
+custom_styles/hover = SubResource( 38 )
+custom_styles/pressed = SubResource( 39 )
+custom_styles/focus = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+button_mask = 0
+text = "Quit"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="score_changer" from="Flynn" to="Flower" method="_on_Flynn_score_changer"]
+[connection signal="score_changer" from="Flynn" to="GuardBoss" method="_on_Flynn_score_changer"]
+[connection signal="score_changer" from="Flynn" to="GuardBoss2" method="_on_Flynn_score_changer"]
+[connection signal="score_changer" from="Flynn" to="GuardBoss3" method="_on_Flynn_score_changer"]
+[connection signal="score_changer" from="Flynn" to="GuardBoss4" method="_on_Flynn_score_changer"]
+[connection signal="score_changer" from="Flynn" to="GuardBoss5" method="_on_Flynn_score_changer"]
+[connection signal="score_changer" from="Flynn" to="UI/Points" method="_on_Flynn_score_changer"]
+[connection signal="score_changer" from="Flynn" to="UI/Game Over" method="_on_Flynn_score_changer"]
+[connection signal="smolder" from="Flynn" to="GuardBoss" method="_on_Flynn_smolder"]
+[connection signal="smolder" from="Flynn" to="GuardBoss2" method="_on_Flynn_smolder"]
+[connection signal="smolder" from="Flynn" to="GuardBoss3" method="_on_Flynn_smolder"]
+[connection signal="smolder" from="Flynn" to="GuardBoss4" method="_on_Flynn_smolder"]
+[connection signal="smolder" from="Flynn" to="GuardBoss5" method="_on_Flynn_smolder"]
+[connection signal="timeout" from="Flynn/ShootTimer" to="Flynn" method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="Flynn/Timer" to="Flynn" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Flynn/SpecialTimer" to="Flynn" method="_on_SpecialTimer_timeout"]
+[connection signal="heal" from="Flower" to="Flynn" method="_on_Flower_heal"]
+[connection signal="come" from="Boss" to="GuardBoss" method="_on_Boss_come"]
+[connection signal="come" from="Boss" to="GuardBoss2" method="_on_Boss_come"]
+[connection signal="come" from="Boss" to="GuardBoss3" method="_on_Boss_come"]
+[connection signal="come" from="Boss" to="GuardBoss4" method="_on_Boss_come"]
+[connection signal="come" from="Boss" to="GuardBoss5" method="_on_Boss_come"]
+[connection signal="area_entered" from="Boss/Area2D" to="Boss" method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="Boss/VelocityTimer" to="Boss" method="_on_VelocityTimer_timeout"]
+[connection signal="timeout" from="Boss/GuardTimer" to="Boss" method="_on_GuardTimer_timeout"]
+[connection signal="die" from="GuardBoss" to="Flynn" method="_on_GuardBoss_die"]
+[connection signal="area_entered" from="GuardBoss/Area2D" to="GuardBoss" method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="GuardBoss/Timer" to="GuardBoss" method="_on_Timer_timeout"]
+[connection signal="timeout" from="GuardBoss/Timer2" to="GuardBoss" method="_on_Timer2_timeout"]
+[connection signal="die" from="GuardBoss2" to="Flynn" method="_on_GuardBoss_die"]
+[connection signal="area_entered" from="GuardBoss2/Area2D" to="GuardBoss2" method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="GuardBoss2/Timer" to="GuardBoss2" method="_on_Timer_timeout"]
+[connection signal="timeout" from="GuardBoss2/Timer2" to="GuardBoss2" method="_on_Timer2_timeout"]
+[connection signal="die" from="GuardBoss3" to="Flynn" method="_on_GuardBoss_die"]
+[connection signal="area_entered" from="GuardBoss3/Area2D" to="GuardBoss3" method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="GuardBoss3/Timer" to="GuardBoss3" method="_on_Timer_timeout"]
+[connection signal="timeout" from="GuardBoss3/Timer2" to="GuardBoss3" method="_on_Timer2_timeout"]
+[connection signal="die" from="GuardBoss4" to="Flynn" method="_on_GuardBoss_die"]
+[connection signal="area_entered" from="GuardBoss4/Area2D" to="GuardBoss4" method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="GuardBoss4/Timer" to="GuardBoss4" method="_on_Timer_timeout"]
+[connection signal="timeout" from="GuardBoss4/Timer2" to="GuardBoss4" method="_on_Timer2_timeout"]
+[connection signal="die" from="GuardBoss5" to="Flynn" method="_on_GuardBoss_die"]
+[connection signal="area_entered" from="GuardBoss5/Area2D" to="GuardBoss5" method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="GuardBoss5/Timer" to="GuardBoss5" method="_on_Timer_timeout"]
+[connection signal="timeout" from="GuardBoss5/Timer2" to="GuardBoss5" method="_on_Timer2_timeout"]
+[connection signal="change_scene" from="UI/Points" to="UI/Control" method="_on_Points_change_scene"]
+[connection signal="timeout" from="UI/Game Over/Restart Timer" to="UI/Control" method="_on_Restart_Timer_timeout"]
+[connection signal="free" from="UI/Control" to="Flower" method="_on_Control_free"]
+[connection signal="pressed" from="UI/Control/Buttons/ResumeButton" to="UI/Control" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="UI/Control/Buttons/QuitButton" to="UI/Control" method="_on_QuitButton_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Flynn.gd" type="Script" id=1]
 [ext_resource path="res://Shoot.png" type="Texture" id=2]
@@ -16,17 +16,44 @@
 [ext_resource path="res://Game Over.gd" type="Script" id=14]
 [ext_resource path="res://Control.gd" type="Script" id=15]
 [ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/source-code-pro/source-code-pro-2.010R-ro-1.030R-it/TTF/SourceCodePro-Regular.ttf" type="DynamicFontData" id=16]
-[ext_resource path="res://txt.tres" type="DynamicFont" id=17]
+[ext_resource path="res://RIDER.wav" type="AudioStream" id=17]
+[ext_resource path="res://Flower.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Health Bar.gd" type="Script" id=19]
+[ext_resource path="res://HealthBar.png" type="Texture" id=20]
+[ext_resource path="res://Rapunzel Shoot.png" type="Texture" id=21]
+[ext_resource path="res://Rapunzel Death.png" type="Texture" id=22]
+[ext_resource path="res://Flynny.tscn" type="PackedScene" id=23]
+[ext_resource path="res://RetrieveTheSatchel.wav" type="AudioStream" id=24]
+[ext_resource path="res://Frog.png" type="Texture" id=25]
+[ext_resource path="res://FrogDeath.png" type="Texture" id=26]
+[ext_resource path="res://FrogAttack.png" type="Texture" id=27]
+[ext_resource path="res://Rapunzel Special.png" type="Texture" id=28]
+[ext_resource path="res://LeavingThisTower.wav" type="AudioStream" id=29]
+[ext_resource path="res://HereComesTheSmolder.wav" type="AudioStream" id=30]
+[ext_resource path="res://Smolder.wav" type="AudioStream" id=31]
+[ext_resource path="res://GotToGetMeOneOfThese.wav" type="AudioStream" id=32]
+[ext_resource path="res://ThisIsTheStrangestThingI'veEverDone.wav" type="AudioStream" id=33]
+[ext_resource path="res://Assume.wav" type="AudioStream" id=34]
+[ext_resource path="res://AllTheThingsWe'veSeen.wav" type="AudioStream" id=35]
+[ext_resource path="res://Bad.wav" type="AudioStream" id=36]
+[ext_resource path="res://Flower.wav" type="AudioStream" id=37]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=45]
+font_data = ExtResource( 16 )
+
 [sub_resource type="Theme" id=42]
+
+[sub_resource type="DynamicFont" id=46]
+size = 15
+font_data = ExtResource( 16 )
 
 [sub_resource type="Animation" id=31]
 length = 0.55
@@ -58,8 +85,6 @@ border_width_top = 7
 border_width_right = 7
 border_width_bottom = 10
 border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 500
-corner_radius_top_right = 300
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=34]
@@ -72,8 +97,6 @@ border_width_top = 7
 border_width_right = 7
 border_width_bottom = 10
 border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 500
-corner_radius_top_right = 300
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=36]
@@ -83,8 +106,6 @@ border_width_top = 7
 border_width_right = 7
 border_width_bottom = 10
 border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 500
-corner_radius_top_right = 300
 corner_detail = 20
 shadow_color = Color( 1, 0.054902, 0.054902, 1 )
 
@@ -101,8 +122,6 @@ border_width_top = 7
 border_width_right = 7
 border_width_bottom = 10
 border_color = Color( 0, 0, 0, 1 )
-corner_radius_bottom_right = 300
-corner_radius_bottom_left = 500
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=39]
@@ -115,8 +134,6 @@ border_width_top = 7
 border_width_right = 7
 border_width_bottom = 10
 border_color = Color( 0, 0, 0, 1 )
-corner_radius_bottom_right = 300
-corner_radius_bottom_left = 500
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=41]
@@ -126,37 +143,45 @@ border_width_top = 7
 border_width_right = 7
 border_width_bottom = 10
 border_color = Color( 0, 0, 0, 1 )
-corner_radius_bottom_right = 300
-corner_radius_bottom_left = 500
 corner_detail = 10
 
 [node name="Level" type="Node2D"]
+
+[node name="Health Bar" type="Sprite" parent="."]
+position = Vector2( 181, 80 )
+scale = Vector2( 0.25, 0.25 )
+z_index = -1
+texture = ExtResource( 20 )
+hframes = 4
+script = ExtResource( 19 )
 
 [node name="Flynn" type="KinematicBody2D" parent="."]
 position = Vector2( 100, 450 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="Flynn"]
-texture = ExtResource( 2 )
-
 [node name="ShootTimer" type="Timer" parent="Flynn"]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Flynn"]
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
+frame = 5
 
-[node name="Flynny" type="Area2D" parent="Flynn"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flynn/Flynny"]
-polygon = PoolVector2Array( 12, -53, 33, -43, 34, -19, 43, 6, 47, 47, 39, 54, -3, 37, -1, 46, -15, 43, -15, 34, -41, 15, -48, -12, -34, -41, -1, -57 )
+[node name="Flynny" parent="Flynn" instance=ExtResource( 23 )]
 
 [node name="Timer" type="Timer" parent="Flynn"]
 wait_time = 3.0
 one_shot = true
 
+[node name="SpecialTimer" type="Timer" parent="Flynn"]
+wait_time = 15.0
+
 [node name="Shooty" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 0, -96 )
+z_index = -2
+
+[node name="Flower" parent="." instance=ExtResource( 18 )]
 
 [node name="Mother Gothel" type="KinematicBody2D" parent="."]
 script = ExtResource( 4 )
@@ -247,6 +272,7 @@ script = ExtResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 960, 540 )
+z_index = 4096
 texture = ExtResource( 11 )
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -258,9 +284,10 @@ margin_top = 28.0
 margin_right = 900.0
 margin_bottom = 68.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = SubResource( 45 )
 text = "Points: "
 script = ExtResource( 13 )
+level = "Level1"
 
 [node name="Game Over" type="Label" parent="UI"]
 visible = false
@@ -270,7 +297,7 @@ margin_right = 576.0
 margin_bottom = 364.0
 rect_scale = Vector2( 6, 6 )
 theme = SubResource( 42 )
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = SubResource( 46 )
 text = "GAME OVER"
 script = ExtResource( 14 )
 
@@ -284,6 +311,7 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 15 )
+next_level = "res://Level2.tscn"
 
 [node name="FadeAnimationPlayer" type="AnimationPlayer" parent="UI/Control"]
 anims/Fade = SubResource( 31 )
@@ -351,6 +379,42 @@ custom_styles/normal = SubResource( 41 )
 button_mask = 0
 text = "Quit"
 
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="RIDER" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 17 )
+
+[node name="Satchel" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 24 )
+
+[node name="LeavingThisTower" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 29 )
+
+[node name="Smolder" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 31 )
+
+[node name="HereComesTheSmolder" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 30 )
+
+[node name="Assume" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 34 )
+
+[node name="AllTheThingsWe\'veSeen" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 35 )
+
+[node name="GotToGetMeOneOfThese" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 32 )
+
+[node name="ThisIsTheStrangestThingI\'veEverDone" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 33 )
+
+[node name="Bad" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 36 )
+
+[node name="Flower" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 37 )
+
+[connection signal="score_changer" from="Flynn" to="Flower" method="_on_Flynn_score_changer"]
 [connection signal="score_changer" from="Flynn" to="Mother Gothel" method="_on_Flynn_score_changer"]
 [connection signal="score_changer" from="Flynn" to="Guard" method="_on_Flynn_score_changer"]
 [connection signal="score_changer" from="Flynn" to="Patchy" method="_on_Flynn_score_changer"]
@@ -363,6 +427,8 @@ text = "Quit"
 [connection signal="smolder" from="Flynn" to="Sideburns" method="_on_Flynn_smolder"]
 [connection signal="timeout" from="Flynn/ShootTimer" to="Flynn" method="_on_ShootTimer_timeout"]
 [connection signal="timeout" from="Flynn/Timer" to="Flynn" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Flynn/SpecialTimer" to="Flynn" method="_on_SpecialTimer_timeout"]
+[connection signal="heal" from="Flower" to="Flynn" method="_on_Flower_heal"]
 [connection signal="death" from="Mother Gothel" to="UI/Points" method="_on_Mother_Gothel_death"]
 [connection signal="die" from="Mother Gothel" to="Flynn" method="_on_Enemy_die"]
 [connection signal="area_entered" from="Mother Gothel/Area2D" to="Mother Gothel" method="_on_Area2D_area_entered"]
@@ -383,6 +449,8 @@ text = "Quit"
 [connection signal="area_entered" from="Sideburns/Area2D" to="Sideburns" method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="Sideburns/Timer" to="Sideburns" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Sideburns/Timer2" to="Sideburns" method="_on_Timer2_timeout"]
+[connection signal="change_scene" from="UI/Points" to="UI/Control" method="_on_Points_change_scene"]
 [connection signal="timeout" from="UI/Game Over/Restart Timer" to="UI/Control" method="_on_Restart_Timer_timeout"]
+[connection signal="free" from="UI/Control" to="Flower" method="_on_Control_free"]
 [connection signal="pressed" from="UI/Control/Buttons/ResumeButton" to="UI/Control" method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="UI/Control/Buttons/QuitButton" to="UI/Control" method="_on_QuitButton_pressed"]

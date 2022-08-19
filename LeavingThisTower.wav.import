@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LeavingThisTower.wav-70a786f758f062bcc42a1cb991edc029.sample"
+
+[deps]
+
+source_file="res://LeavingThisTower.wav"
+dest_files=[ "res://.import/LeavingThisTower.wav-70a786f758f062bcc42a1cb991edc029.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

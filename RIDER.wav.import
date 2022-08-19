@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/RIDER.wav-0c6307f282482c15b45b79ff6f162987.sample"
+
+[deps]
+
+source_file="res://RIDER.wav"
+dest_files=[ "res://.import/RIDER.wav-0c6307f282482c15b45b79ff6f162987.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

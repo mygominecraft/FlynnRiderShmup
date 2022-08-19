@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://RapunzelBox.gd" type="Script" id=1]
+[ext_resource path="res://FlynnBox.gd" type="Script" id=2]
+
+[node name="Flynny" type="Area2D"]
+
+[node name="FlynnBox" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 12, -53, 33, -43, 34, -19, 43, 6, 47, 47, 39, 54, -3, 37, -1, 46, -15, 43, -15, 34, -41, 15, -48, -12, -34, -41, -1, -57 )
+script = ExtResource( 2 )
+
+[node name="RapunzelBox" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -8.5, -40.5, 8, -37.5, 14.5, -37.5, 28.5, -26.5, 35, -27.5, 37.5, -11.5, 32.5, -2, 31.5, 9.5, 29.5, 27, 25.5, 26, 9.5, 42, -12.5, 41, -40, -4.5, -41, -11.5, -34.5, -14, -22.5, -31.5 )
+script = ExtResource( 1 )

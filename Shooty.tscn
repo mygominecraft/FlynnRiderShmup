@@ -1,22 +1,35 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Shooty.gd" type="Script" id=1]
 [ext_resource path="res://Frying Pan.png" type="Texture" id=2]
+[ext_resource path="res://FryingPanBang.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 52.6118
 
-[node name="Shooty" type="KinematicBody2D"]
-script = ExtResource( 1 )
+[node name="Shooter" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Shooty" type="KinematicBody2D" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 124.0 ]
+}
+
+[node name="Sprite" type="Sprite" parent="Shooty"]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
-[node name="Shoots" type="Area2D" parent="."]
+[node name="Shoots" type="Area2D" parent="Shooty"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shoots"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shooty/Shoots"]
 position = Vector2( 42, 0 )
 shape = SubResource( 1 )
 
-[connection signal="area_exited" from="Shoots" to="." method="_on_Area2D_area_exited"]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Shooty"]
+position = Vector2( 1, 5 )
+scale = Vector2( 9.5, 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="area_exited" from="Shooty/Shoots" to="Shooty" method="_on_Area2D_area_exited"]
