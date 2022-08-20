@@ -300,7 +300,7 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 4 )
-next_level = "res://Boss.tscn"
+next_level = "res://PasswordLevel.tscn"
 
 [node name="FadeAnimationPlayer" type="AnimationPlayer" parent="UI/Control"]
 anims/Fade = SubResource( 31 )

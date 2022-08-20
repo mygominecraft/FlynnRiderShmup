@@ -32,6 +32,13 @@ func _ready():
 		$AnimatedSprite.frame = 3
 		$AnimatedSprite.scale.x = 0.25
 		$AnimatedSprite.scale.y = 0.25
+		sound = randi()%3+1
+		if sound == 1:
+			get_parent().get_node("Sounds/Who'sThat").play()
+		elif sound == 2:
+			get_parent().get_node("Sounds/IWillUseThis").play()
+		elif sound == 3:
+			get_parent().get_node("Sounds/BestDayEver").play()
 	else:
 		pass
 	Globals.menu = false
@@ -89,6 +96,7 @@ func _physics_process(delta):
 					lock = true
 				elif Globals.character == "Rapunzel":
 					$Flynny.queue_free()
+					get_parent().get_node("Sounds/Flower").play()
 					$AnimatedSprite.frame = 5
 					$AnimatedSprite.scale.x = 0.15
 					$AnimatedSprite.scale.y = 0.15

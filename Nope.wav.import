@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Nope.wav-c6685a89f7fc2bec0e50c7b1cf92f436.sample"
+
+[deps]
+
+source_file="res://Nope.wav"
+dest_files=[ "res://.import/Nope.wav-c6685a89f7fc2bec0e50c7b1cf92f436.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Flynn.gd" type="Script" id=1]
 [ext_resource path="res://Shoot.png" type="Texture" id=2]
@@ -28,7 +28,7 @@
 [ext_resource path="res://FrogDeath.png" type="Texture" id=26]
 [ext_resource path="res://FrogAttack.png" type="Texture" id=27]
 [ext_resource path="res://Rapunzel Special.png" type="Texture" id=28]
-[ext_resource path="res://LeavingThisTower.wav" type="AudioStream" id=29]
+[ext_resource path="res://No.wav" type="AudioStream" id=29]
 [ext_resource path="res://HereComesTheSmolder.wav" type="AudioStream" id=30]
 [ext_resource path="res://Smolder.wav" type="AudioStream" id=31]
 [ext_resource path="res://GotToGetMeOneOfThese.wav" type="AudioStream" id=32]
@@ -37,6 +37,10 @@
 [ext_resource path="res://AllTheThingsWe'veSeen.wav" type="AudioStream" id=35]
 [ext_resource path="res://Bad.wav" type="AudioStream" id=36]
 [ext_resource path="res://Flower.wav" type="AudioStream" id=37]
+[ext_resource path="res://Who'sThat.wav" type="AudioStream" id=38]
+[ext_resource path="res://BestDayEver.wav" type="AudioStream" id=39]
+[ext_resource path="res://ICan'tBelieveIDidThis.wav" type="AudioStream" id=40]
+[ext_resource path="res://IWillUseThis.wav" type="AudioStream" id=41]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -413,6 +417,18 @@ stream = ExtResource( 36 )
 
 [node name="Flower" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 37 )
+
+[node name="BestDayEver" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 39 )
+
+[node name="ICan\'tBelieveIDidThis" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 40 )
+
+[node name="IWillUseThis" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 41 )
+
+[node name="Who\'sThat" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 38 )
 
 [connection signal="score_changer" from="Flynn" to="Flower" method="_on_Flynn_score_changer"]
 [connection signal="score_changer" from="Flynn" to="Mother Gothel" method="_on_Flynn_score_changer"]

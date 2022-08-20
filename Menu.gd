@@ -58,3 +58,9 @@ func _on_Shop_pressed():
 	animation_player.play("Fade")
 	yield(animation_player, "animation_finished")
 	get_tree().change_scene("res://Shop.tscn")
+
+func _on_Credits_pressed():
+	$FadeAnimationPlayer/Fade.visible = true
+	animation_player.play("Fade")
+	yield(animation_player, "animation_finished")
+	get_tree().change_scene("res://Credits.tscn")

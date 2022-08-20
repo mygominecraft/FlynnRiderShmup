@@ -16,3 +16,4 @@ var menu
 var amount
 var total_score = 0
 var song
+var password = false

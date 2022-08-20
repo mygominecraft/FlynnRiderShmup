@@ -20,6 +20,9 @@ func _process(delta):
 		emit_signal("change_scene")
 	elif level == "Level5" and points == 4000:
 		emit_signal("change_scene")
+	elif level == "PasswordLevel" and Globals.password == true:
+		emit_signal("change_scene")
+		Globals.password = false
 	elif level == "Boss" and Globals.boss_defeated == true:
 		emit_signal("change_scene")
 	elif level == "LevelEndless":

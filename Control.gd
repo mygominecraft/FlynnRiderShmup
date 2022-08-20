@@ -43,11 +43,18 @@ func _on_Restart_Timer_timeout():
 	get_tree().change_scene("res://Menu.tscn")
 
 func _on_Points_change_scene():
-	var soundy = get_parent().get_parent().get_node("Sounds/AllTheThingsWe'veSeen")
-	if once == false:
-		once = true
-		soundy.play()
-	yield(soundy,"finished")
+	if Globals.character == "Flynn" and get_parent().get_parent().name != "PasswordLevel":
+		var soundy = get_parent().get_parent().get_node("Sounds/AllTheThingsWe'veSeen")
+		if once == false:
+			once = true
+			soundy.play()
+		yield(soundy,"finished")
+	if Globals.character == "Rapunzel" and get_parent().get_parent().name != "PasswordLevel":
+		var soundy = get_parent().get_parent().get_node("Sounds/ICan'tBelieveIDidThis")
+		if once == false:
+			once = true
+			soundy.play()
+		yield(soundy,"finished")
 	Globals.hide = true
 	Globals.visibility = false
 	$FadeAnimationPlayer/Fade.visible = true
