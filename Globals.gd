@@ -17,3 +17,7 @@ var amount
 var total_score = 0
 var song
 var password = false
+var freeze = false
+var attack = false
+var killed = false
+var area_name

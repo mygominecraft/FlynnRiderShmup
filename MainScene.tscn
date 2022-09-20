@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Flynn.gd" type="Script" id=1]
 [ext_resource path="res://Shoot.png" type="Texture" id=2]
@@ -41,10 +41,14 @@
 [ext_resource path="res://BestDayEver.wav" type="AudioStream" id=39]
 [ext_resource path="res://ICan'tBelieveIDidThis.wav" type="AudioStream" id=40]
 [ext_resource path="res://IWillUseThis.wav" type="AudioStream" id=41]
+[ext_resource path="res://Screech.wav" type="AudioStream" id=42]
+[ext_resource path="res://Maximus.png" type="Texture" id=43]
+[ext_resource path="res://DeathOfMax.png" type="Texture" id=44]
+[ext_resource path="res://Neigh.wav" type="AudioStream" id=45]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 43 ), ExtResource( 44 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -169,7 +173,7 @@ script = ExtResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Flynn"]
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
-frame = 5
+frame = 9
 
 [node name="Flynny" parent="Flynn" instance=ExtResource( 23 )]
 
@@ -215,9 +219,9 @@ script = ExtResource( 4 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
-[node name="Area2D" type="Area2D" parent="Guard"]
+[node name="Area2" type="Area2D" parent="Guard"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Guard/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Guard/Area2"]
 polygon = PoolVector2Array( -3, -164, 37, -151, 78, -108, 95, -44, 96, -6, 110, 77, 91, 108, 78, 97, 67, 100, 58, 128, -18, 167, -56, 163, -84, 136, -100, 81, -103, -38, -91, -100, -48, -150 )
 
 [node name="Timer" type="Timer" parent="Guard"]
@@ -430,6 +434,12 @@ stream = ExtResource( 41 )
 [node name="Who\'sThat" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 38 )
 
+[node name="Screech" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 42 )
+
+[node name="Neigh" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 45 )
+
 [connection signal="score_changer" from="Flynn" to="Flower" method="_on_Flynn_score_changer"]
 [connection signal="score_changer" from="Flynn" to="Mother Gothel" method="_on_Flynn_score_changer"]
 [connection signal="score_changer" from="Flynn" to="Guard" method="_on_Flynn_score_changer"]
@@ -452,7 +462,8 @@ stream = ExtResource( 38 )
 [connection signal="timeout" from="Mother Gothel/Timer2" to="Mother Gothel" method="_on_Timer2_timeout"]
 [connection signal="death" from="Guard" to="UI/Points" method="_on_Guard_death"]
 [connection signal="die" from="Guard" to="Flynn" method="_on_Enemy_die"]
-[connection signal="area_entered" from="Guard/Area2D" to="Guard" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Guard/Area2" to="Guard" method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Guard/Area2" to="Guard" method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Guard/Timer" to="Guard" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Guard/Timer2" to="Guard" method="_on_Timer2_timeout"]
 [connection signal="death" from="Patchy" to="UI/Points" method="_on_Patchy_death"]

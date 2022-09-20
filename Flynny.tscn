@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://RapunzelBox.gd" type="Script" id=1]
 [ext_resource path="res://FlynnBox.gd" type="Script" id=2]
+[ext_resource path="res://FrogBox.gd" type="Script" id=3]
+[ext_resource path="res://MaximusBox.gd" type="Script" id=4]
 
 [node name="Flynny" type="Area2D"]
 
@@ -12,3 +14,13 @@ script = ExtResource( 2 )
 [node name="RapunzelBox" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -8.5, -40.5, 8, -37.5, 14.5, -37.5, 28.5, -26.5, 35, -27.5, 37.5, -11.5, 32.5, -2, 31.5, 9.5, 29.5, 27, 25.5, 26, 9.5, 42, -12.5, 41, -40, -4.5, -41, -11.5, -34.5, -14, -22.5, -31.5 )
 script = ExtResource( 1 )
+
+[node name="FrogBox" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -34, -60, -21, -63, -15, -62, 2, -50, 15, -49, 23, -56, 26, -55, 27, -40, 34, -39, 41, -27, 41, -23, 38, -21, 38, -18, 47, -7, 31, 18, 12, 31, -13, 33, -40, 14, -44, 1, -43, -32, -34, -52 )
+script = ExtResource( 3 )
+
+[node name="MaximusBox" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 10 )
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( -34, -204, -22, -156, -22, -146, -4, -134, 42, -190, 40, -136, 28, -114, 40, -104, 42, -84, 48, -76, 56, -56, 56, -28, 62, -12, 82, -16, 84, 8, 72, 28, 78, 36, 72, 64, 58, 70, 60, 112, 64, 124, 50, 158, 20, 168, 0, 160, -28, 104, -60, 110, -84, 84, -100, 40, -94, -20, -84, -62, -54, -116, -58, -140, -50, -176 )
+script = ExtResource( 4 )

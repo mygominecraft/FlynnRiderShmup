@@ -39,8 +39,20 @@ func _ready():
 			get_parent().get_node("Sounds/IWillUseThis").play()
 		elif sound == 3:
 			get_parent().get_node("Sounds/BestDayEver").play()
-	else:
-		pass
+	elif Globals.character == "Frog":
+		$AnimatedSprite.frame = 6
+		$AnimatedSprite.scale.x = 0.5
+		$AnimatedSprite.scale.y = 0.5
+		$Flynny.scale.y = 0.5
+		$Flynny.scale.x = 0.5
+		get_parent().get_node("Sounds/Screech").play()
+	elif Globals.character == "Maximus":
+		$AnimatedSprite.frame = 9
+		$AnimatedSprite.scale.x = 0.4
+		$AnimatedSprite.scale.y = 0.4
+		$Flynny.scale.y = 0.9
+		$Flynny.scale.x = 0.9
+		get_parent().get_node("Sounds/Neigh").play()
 	Globals.menu = false
 
 func _physics_process(delta):
@@ -102,6 +114,16 @@ func _physics_process(delta):
 					$AnimatedSprite.scale.y = 0.15
 					$Timer.wait_time = 10
 					$Timer.start()
+				elif Globals.character == "Frog":
+					get_parent().get_node("Sounds/Screech").play()
+					Globals.freeze = true
+					$Timer.wait_time = 10
+					$Timer.start()
+				elif Globals.character == "Maximus":
+					get_parent().get_node("Sounds/Neigh").play()
+					Globals.attack = true
+					$Timer.wait_time = 10
+					$Timer.start()
 				special = false
 				$SpecialTimer.start()
 	elif pause == true:
@@ -123,6 +145,14 @@ func _on_Enemy_die():
 			$AnimatedSprite.frame = 2
 		elif Globals.character == "Rapunzel":
 			$AnimatedSprite.frame = 4
+		elif Globals.character == "Frog":
+			$AnimatedSprite.frame = 8
+			$AnimatedSprite.scale.y = 0.15
+			$AnimatedSprite.scale.x = 0.15
+		elif Globals.character == "Maximus":
+			$AnimatedSprite.frame = 10
+			$AnimatedSprite.scale.y = 0.2
+			$AnimatedSprite.scale.x = 0.2
 		else:
 			pass
 		Globals.death = true
@@ -146,6 +176,10 @@ func _on_Timer_timeout():
 		$AnimatedSprite.scale.x = 0.25
 		$AnimatedSprite.scale.y = 0.25
 		$AnimatedSprite.frame = 3
+	elif Globals.character == "Frog":
+		Globals.freeze = false
+	elif Globals.character == "Maximus":
+		Globals.freeze = false
 
 func _on_SpecialTimer_timeout():
 	special = true

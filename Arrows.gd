@@ -83,8 +83,28 @@ func _physics_process(delta):
 				file.close()
 		elif self.rect_position == Maximus:
 			Globals.character = "Maximus"
+			var data = {
+			"Character" : Globals.character,
+			"HighScore" : Globals.high_score,
+			"TotalScore" : Globals.total_score 
+			}
+			var file = File.new()
+			var ERROR = file.open(save_path, File.WRITE)
+			if ERROR == OK:
+				file.store_var(data)
+				file.close()
 		elif self.rect_position == Mystery:
-			Globals.character = "Pascal"
+			Globals.character = "Frog"
+			var data = {
+			"Character" : Globals.character,
+			"HighScore" : Globals.high_score,
+			"TotalScore" : Globals.total_score 
+			}
+			var file = File.new()
+			var ERROR = file.open(save_path, File.WRITE)
+			if ERROR == OK:
+				file.store_var(data)
+				file.close()
 
 func _on_Timer_timeout():
 	show()
